@@ -110,7 +110,860 @@
 
     </p>
     <hr>
+<!-- dml commands -->
+ <p id="program2">
+    <h2>DML(DATA MANIPULATION LANGUAGE))</h2>
+    <p>Q1)Insert a record into STUDENT table with values:
 
+SID = 101, SNAME = 'RAHUL', AGE = 20, COURSE = 'MCA'.
+</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  INSERT INTO STUDENT (SID, SNAME, AGE, COURSE)
+VALUES (101, 'RAHUL', 20, 'MCA');</pre>
+
+
+    </details>
+    <p>Q2)Display EMPNO, ENAME, and SAL of all employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   INSERT INTO EMPLOYEE (EID, ENAME, SALARY, DEPTNO)
+VALUES (201, 'ANITA', 45000, 10);</pre>
+
+
+    </details>
+    <p>Q3)Insert a new department into DEPT table; DEPTNO = 50, DNAME = 'TRAINING', LOC = 'DELHI'.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   INSERT INTO DEPT (DEPTNO, DNAME, LOC)
+VALUES (50, 'TRAINING', 'DELHI');</pre>
+
+
+    </details>
+
+
+    <p>4 Insert a record into BOOK table with only BOOK_ID, TITLE, and PRICE.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   INSERT INTO BOOK (BOOK_ID, TITLE, PRICE)
+VALUES (/* enter id */, '/* enter title */', /* enter price */);</pre>
+
+
+    </details>
+
+    <p>5 
+
+Insert multiple rows into COURSE table.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  INSERT INTO COURSE (COURSE_ID, COURSE_NAME, DURATION)
+VALUES 
+(1, 'MCA', 3),
+(2, 'BCA', 3),
+(3, 'MBA', 2);</pre>
+
+
+    </details>
+
+
+    <p>6 Insert data into EMP_COPY table from the EMP table.
+
+.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  INSERT INTO EMP_COPY
+SELECT * FROM EMP;</pre>
+
+
+    </details>
+    <p>7 Insert employees from EMP whose salary is greater than 3000 into EMP_HIGH_SAL.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   INSERT INTO EMP_HIGH_SAL
+SELECT * FROM EMP
+WHERE SALARY > 3000;  </pre>
+
+
+    </details>
+    <p>8 Insert employees hired after 1981 into EMP_NEW_HIRE.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  INSERT INTO EMP_NEW_HIRE
+SELECT *
+FROM EMP
+WHERE HIRE_DATE > '1981-12-31';</pre>
+
+
+    </details>
+    <p>9 Insert department numbers and names from DEPT into a table called DEPT_BACKUP.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   INSERT INTO DEPT_BACKUP (DEPTNO, DNAME)
+SELECT DEPTNO, DNAME
+FROM DEPT;</pre>
+
+
+    </details>
+    <p>10 Insert employee names and salaries into a table EMP_SALARY_RECORD.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   INSERT INTO EMP_SALARY_RECORD (ENAME, SALARY)
+SELECT ENAME, SALARY
+FROM EMP;</pre>
+
+
+    </details>
+
+    </p>
+    <hr>
+
+    <!-- DDL commands -->
+ <p id="program3">
+    <h2>DDL(DATA DEFINITION LANGUAGE))</h2>
+    <p>Q1)Create a table called STUDENT with columns: SID (NUMBER) , SNAME (VARCHAR2(30)) , AGE (NUMBER) , COURSE (VARCHAR2(20))
+
+</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE STUDENT (
+    SID NUMBER,
+    SNAME VARCHAR2(30),
+    AGE NUMBER,
+    COURSE VARCHAR2(20)
+);</pre>
+
+
+    </details>
+    <p>Q2)Create a table EMPLOYEE with columns: EID NUMBER , ENAME VARCHAR2(40) , SALARY NUMBER(8,2) , DEPTNO NUMBER
+        <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> CREATE TABLE EMPLOYEE (
+    EID NUMBER,
+    ENAME VARCHAR2(40),
+    SALARY NUMBER(8,2),
+    DEPTNO NUMBER
+);</pre>
+
+
+    </details>
+    <p>Q3)Create a table DEPARTMENT with columns: DEPTNO NUMBER , DNAME VARCHAR2(30) , LOCATION VARCHAR2(30)
+        <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE DEPARTMENT (
+    DEPTNO NUMBER,
+    DNAME VARCHAR2(30),
+    LOCATION VARCHAR2(30)
+);</pre>
+
+
+    </details>
+
+
+    <p>4 Create a table BOOK with columns: BOOK_ID NUMBER , TITLE VARCHAR2(50) , AUTHOR VARCHAR2(40) , PRICE NUMBER.
+        
+    </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE BOOK (
+    BOOK_ID NUMBER,
+    TITLE VARCHAR2(50),
+    AUTHOR VARCHAR2(40),
+    PRICE NUMBER
+);
+    </details>
+
+    <p>5) Create a table COURSE with columns: CID NUMBER , CNAME VARCHAR2(40) , DURATION NUMBER
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE COURSE (
+    CID NUMBER,
+    CNAME VARCHAR2(40),
+    DURATION NUMBER
+);</pre>
+
+
+    </details>
+
+
+    <p>6 Create a table PROJECT with columns: PID NUMBER , PNAME VARCHAR2(50) , START_DATE DATE , END_DATE DATE</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE PROJECT (
+    PID NUMBER,
+    PNAME VARCHAR2(50),
+    START_DATE DATE,
+    END_DATE DATE
+);</pre>
+
+
+    </details>
+    <p>7 Create a table CUSTOMER with columns: CID NUMBER , CNAME VARCHAR2(40) , CITY VARCHAR2(30) , PHONE NUMBER
+        <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   CREATE TABLE CUSTOMER (
+    CID NUMBER,
+    CNAME VARCHAR2(40),
+    CITY VARCHAR2(30),
+    PHONE NUMBER
+);  </pre>
+
+
+    </details>
+    <p>8 Create a table SALES with columns: SALE_ID NUMBER , PRODUCT_NAME VARCHAR2(50) , QUANTITY NUMBER , PRICE NUMBER
+        <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE SALES (
+    SALE_ID NUMBER,
+    PRODUCT_NAME VARCHAR2(50),
+    QUANTITY NUMBER,
+    PRICE NUMBER
+);</pre>
+
+
+    </details>
+    <p>9 Create a table EMP_COPY from the existing EMP table (structure only)
+        <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> CREATE TABLE EMP_COPY AS
+SELECT *
+FROM EMP
+WHERE 1 = 0;</pre>
+
+
+    </details>
+    <p>10 Create a table EMP_BACKUP from EMP including data
+        <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  CREATE TABLE EMP_BACKUP AS
+SELECT *
+FROM EMP;</pre>
+
+
+    </details>
+
+    </p>
+    <hr>
+<!-- %rowtype -->
+
+<p id="program17">
+    <h2> PLSQL:%TYPE AND %ROW TYPE </h2>
+    <p>Question 1 Write a PL/SQL block to fetch employee name from EMP table for empno = 7369 and display it.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_name emp.ename%TYPE;
+BEGIN
+    SELECT ename INTO v_name FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_name);
+END;
+/</pre>
+      </details>
+    <p>Question 2 Write a PL/SQL block to retrieve salary of an employee and print it.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_sal emp.sal%TYPE;
+BEGIN
+    SELECT sal INTO v_sal FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || v_sal);
+END;
+/
+ </pre>
+      </details>
+<p>Question 3  Write a PL/SQL block to fetch employee name and job using a single SELECT statement.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_name emp.ename%TYPE;
+    v_job emp.job%TYPE;
+BEGIN
+    SELECT ename, job INTO v_name, v_job FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name || ' Job: ' || v_job);
+END;
+/
+
+ </pre>
+      </details>
+    <p>Question 4 Write a PL/SQL block to display department number of an employee using SELECT INTO.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_dept emp.deptno%TYPE;
+BEGIN
+    SELECT deptno INTO v_dept FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Department No: ' || v_dept);
+END;
+/
+
+</pre>
+        <details></details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Question 5 Write a PL/SQL block to fetch hiredate of an employee and display it.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_date emp.hiredate%TYPE;
+BEGIN
+    SELECT hiredate INTO v_date FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Hire Date: ' || v_date);
+END;
+/ </pre>
+      </details>
+    <p>Question 6
+-- Write a PL/SQL block to count total number of employees using SELECT INTO.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_count NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO v_count FROM emp;
+    DBMS_OUTPUT.PUT_LINE('Total Employees: ' || v_count);
+END;
+/
+</pre>
+      </details>
+    <p>Question 7 Write a PL/SQL block to declare a variable using %TYPE based on EMP.SAL and display salary.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_sal emp.sal%TYPE := 2000;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || v_sal);
+END;
+/</pre>
+      </details>
+    <p>Question 8 Write a PL/SQL block to declare variables for employee name and job using %TYPE.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_name emp.ename%TYPE := 'SCOTT';
+    v_job emp.job%TYPE := 'ANALYST';
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name || ' Job: ' || v_job);
+END;
+/</pre>
+      </details>
+    <p> Question 9
+-- Write a PL/SQL block to fetch salary using a %TYPE variable and display it.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_sal emp.sal%TYPE;
+BEGIN
+    SELECT sal INTO v_sal FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || v_sal);
+END;
+/
+</pre>
+      </details>
+    <p>Question 10
+-- Write a PL/SQL block to calculate annual salary using %TYPE variable.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_sal emp.sal%TYPE;
+    v_annual NUMBER;
+BEGIN
+    SELECT sal INTO v_sal FROM emp WHERE empno = 7369;
+    v_annual := v_sal * 12;
+    DBMS_OUTPUT.PUT_LINE('Annual Salary: ' || v_annual);
+END;
+/
+</pre>
+      </details>
+    <p> Question 11
+-- Write a PL/SQL block to update salary using %TYPE variable.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_sal emp.sal%TYPE;
+BEGIN
+    v_sal := 3000;
+    UPDATE emp SET sal = v_sal WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Salary Updated');
+END;
+/
+</pre>
+      </details>
+    <p>Question 12
+-- Write a PL/SQL block to declare a variable using %TYPE for entire EMP table row.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    SELECT * INTO v_emp FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_emp.ename);
+END;
+/
+</pre>
+      </details
+    ><p>Question 13 Write a PL/SQL block to declare a record using %ROWTYPE for EMP table.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    SELECT * INTO v_emp FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE(v_emp.ename || ' ' || v_emp.sal);
+END;
+/
+</pre>
+      </details>
+    <p>Question 14 Write a PL/SQL block to fetch complete employee record using SELECT INTO.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    SELECT * INTO v_emp FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE(v_emp.ename || ' ' || v_emp.job || ' ' || v_emp.sal);
+END;
+/
+</pre>
+      </details>
+    <p>Question 15 Write a PL/SQL block to display employee name, salary, and job using %ROWTYPE.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    SELECT * INTO v_emp FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE(v_emp.ename || ' ' || v_emp.job || ' ' || v_emp.sal);
+END;
+/</pre>
+      </details> 
+    <p>Question 16 Write a PL/SQL block to update salary using %ROWTYPE variable.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    SELECT * INTO v_emp FROM emp WHERE empno = 7369;
+    v_emp.sal := v_emp.sal + 500;
+    UPDATE emp SET sal = v_emp.sal WHERE empno = 7369;
+END;
+/</pre>
+      </details>
+    <p>Question 17 Write a PL/SQL block to insert a record using %ROWTYPE.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    v_emp.empno := 9999;
+    v_emp.ename := 'TEST';
+    v_emp.job := 'CLERK';
+    v_emp.sal := 1000;
+
+    INSERT INTO emp(empno, ename, job, sal)
+    VALUES (v_emp.empno, v_emp.ename, v_emp.job, v_emp.sal);
+END;
+/</pre>
+      </details> 
+    <p>Question 18
+-- Write a PL/SQL block to fetch employee details based on empno using SELECT INTO.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_name emp.ename%TYPE;
+BEGIN
+    SELECT ename INTO v_name FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE(v_name);
+END;
+/
+</pre>
+      </details>
+    <p>Question 19 Write a PL/SQL block using SELECT INTO and multiple variables together.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_name emp.ename%TYPE;
+    v_sal emp.sal%TYPE;
+BEGIN
+    SELECT ename, sal INTO v_name, v_sal FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE(v_name || ' ' || v_sal);
+END;
+/
+</pre>
+      </details> 
+    <p>Question 20 Write a PL/SQL block to fetch employee details using %ROWTYPE and display all columns.
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp emp%ROWTYPE;
+BEGIN
+    SELECT * INTO v_emp FROM emp WHERE empno = 7369;
+    DBMS_OUTPUT.PUT_LINE(v_emp.ename || ' ' || v_emp.job || ' ' || v_emp.sal);
+END;
+/
+
+</pre>
+      </details>
+
+    </p>
+    <hr>
+
+    <!-- exception  -->
+<p id="program18">
+    <h2>Exception Handling in plsql</h2>
+    <p>Q1) Write a PL/SQL block to handle ZERO_DIVIDE exception.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+a NUMBER := 10;
+b NUMBER := 0;
+c NUMBER;
+BEGIN
+c := a / b;
+DBMS_OUTPUT.PUT_LINE(c);
+EXCEPTION
+WHEN ZERO_DIVIDE THEN
+DBMS_OUTPUT.PUT_LINE('Division by zero error');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Division by zero error</p></details>
+</details>
+
+<p>Q2) Write a PL/SQL block to handle NO_DATA_FOUND exception.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+v_name VARCHAR2(50);
+BEGIN
+SELECT ename INTO v_name FROM emp WHERE empno = 9999;
+DBMS_OUTPUT.PUT_LINE(v_name);
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('No record found');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>No record found</p></details>
+</details>
+
+<p>Q3) Write a PL/SQL block to handle TOO_MANY_ROWS exception.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+v_name VARCHAR2(50);
+BEGIN
+SELECT ename INTO v_name FROM emp WHERE deptno = 10;
+DBMS_OUTPUT.PUT_LINE(v_name);
+EXCEPTION
+WHEN TOO_MANY_ROWS THEN
+DBMS_OUTPUT.PUT_LINE('Too many rows returned');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Too many rows returned</p></details>
+</details>
+
+<p>Q4) Write a PL/SQL block using WHEN OTHERS.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+DBMS_OUTPUT.PUT_LINE(10/0);
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Some error occurred');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Some error occurred</p></details>
+</details>
+
+<p>Q5) Write a PL/SQL block using user-defined exception.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+e_invalid EXCEPTION;
+num NUMBER := -5;
+BEGIN
+IF num < 0 THEN
+RAISE e_invalid;
+END IF;
+EXCEPTION
+WHEN e_invalid THEN
+DBMS_OUTPUT.PUT_LINE('Invalid number');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Invalid number</p></details>
+</details>
+
+<p>Q6) Write a PL/SQL block using RAISE statement.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+e_error EXCEPTION;
+BEGIN
+RAISE e_error;
+EXCEPTION
+WHEN e_error THEN
+DBMS_OUTPUT.PUT_LINE('Exception raised manually');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Exception raised manually</p></details>
+</details>
+
+<p>Q7) Write a PL/SQL block to handle VALUE_ERROR exception.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+num NUMBER;
+BEGIN
+num := 'ABC';
+EXCEPTION
+WHEN VALUE_ERROR THEN
+DBMS_OUTPUT.PUT_LINE('Invalid data type');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Invalid data type</p></details>
+</details>
+
+<p>Q8) Write a PL/SQL block to handle INVALID_NUMBER exception.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+num NUMBER;
+BEGIN
+num := TO_NUMBER('XYZ');
+EXCEPTION
+WHEN INVALID_NUMBER THEN
+DBMS_OUTPUT.PUT_LINE('Invalid number format');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Invalid number format</p></details>
+</details>
+
+<p>Q9) Write a PL/SQL block using multiple exceptions.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+a NUMBER := 10;
+b NUMBER := 0;
+c NUMBER;
+BEGIN
+c := a / b;
+EXCEPTION
+WHEN ZERO_DIVIDE THEN
+DBMS_OUTPUT.PUT_LINE('Divide by zero');
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Other error');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Divide by zero</p></details>
+</details>
+
+<p>Q10) Write a PL/SQL block to display SQLERRM.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+DBMS_OUTPUT.PUT_LINE(10/0);
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>ORA-01476: divisor is equal to zero</p></details>
+</details>
+
+<p>Q11) Write a PL/SQL block to display SQLCODE.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+DBMS_OUTPUT.PUT_LINE(10/0);
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLCODE);
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>-1476</p></details>
+</details>
+
+<p>Q12) Write a PL/SQL block with nested exception handling.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+BEGIN
+DBMS_OUTPUT.PUT_LINE(10/0);
+EXCEPTION
+WHEN ZERO_DIVIDE THEN
+DBMS_OUTPUT.PUT_LINE('Inner exception');
+END;
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Inner exception</p></details>
+</details>
+
+<p>Q13) Write a PL/SQL block raising exception explicitly.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+e EXCEPTION;
+BEGIN
+RAISE e;
+EXCEPTION
+WHEN e THEN
+DBMS_OUTPUT.PUT_LINE('Explicit exception');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Explicit exception</p></details>
+</details>
+
+<p>Q14) Write a PL/SQL block to handle numeric error.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+n NUMBER;
+BEGIN
+n := TO_NUMBER('ABC');
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Numeric error');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Numeric error</p></details>
+</details>
+
+<p>Q15) Write a PL/SQL block to handle login denied (simulation).</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+RAISE_APPLICATION_ERROR(-20001, 'Login denied');
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>ORA-20001: Login denied</p></details>
+</details>
+
+<p>Q16) Write a PL/SQL block using exception with IF condition.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+n NUMBER := -1;
+e EXCEPTION;
+BEGIN
+IF n < 0 THEN
+RAISE e;
+END IF;
+EXCEPTION
+WHEN e THEN
+DBMS_OUTPUT.PUT_LINE('Negative number');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Negative number</p></details>
+</details>
+
+<p>Q17) Write a PL/SQL block with multiple exception handlers.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+DBMS_OUTPUT.PUT_LINE(10/0);
+EXCEPTION
+WHEN ZERO_DIVIDE THEN
+DBMS_OUTPUT.PUT_LINE('Zero error');
+WHEN VALUE_ERROR THEN
+DBMS_OUTPUT.PUT_LINE('Value error');
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Other');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Zero error</p></details>
+</details>
+
+<p>Q18) Write a PL/SQL block handling null value error.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>DECLARE
+n NUMBER;
+BEGIN
+n := NULL;
+IF n IS NULL THEN
+RAISE VALUE_ERROR;
+END IF;
+EXCEPTION
+WHEN VALUE_ERROR THEN
+DBMS_OUTPUT.PUT_LINE('Null value error');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Null value error</p></details>
+</details>
+
+<p>Q19) Write a PL/SQL block using exception in loop.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+FOR i IN 1..3 LOOP
+BEGIN
+DBMS_OUTPUT.PUT_LINE(10/(i-2));
+EXCEPTION
+WHEN ZERO_DIVIDE THEN
+DBMS_OUTPUT.PUT_LINE('Error at i='||i);
+END;
+END LOOP;
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Error at i=2</p></details>
+</details>
+
+<p>Q20) Write a PL/SQL block using default exception handling.</p>
+<details>
+<summary><b>QUERY:</b></summary>
+<pre>BEGIN
+DBMS_OUTPUT.PUT_LINE(10/0);
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Default handler executed');
+END;
+/
+</pre>
+<details><summary><b>OUTPUT</b></summary><p>Default handler executed</p></details>
+</details>
+    <!-- subquries -->
     <p id="program4">
     <h2>SUBQUERIES:SINGLE ROW,MULTIPLE ROW</h2>
     <p>1 Display employees whose salary is greater than the salary of SMITH.</p>
@@ -442,152 +1295,98 @@
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>  SELECT DEPTNO FROM EMP UNION SELECT DEPTNO FROM DEPT;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q2)Display all department numbers from EMP and DEPT including duplicates using UNION ALL.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT DEPTNO FROM EMP UNION ALL SELECT DEPTNO FROM DEPT;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
 
     <p>Q3)display department numbers that are present in both EMP and DEPT using INTERSECT..</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q4)Display department numbers that are present in EMP but not in DEPT using MINUS.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT DEPTNO FROM EMP MINUS SELECT DEPTNO FROM DEPT;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q5)Display department numbers that are present in DEPT but not assigned to any employee.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT DEPTNO FROM DEPT MINUS SELECT DEPTNO FROM EMP;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q6)Display employee names and department names in a single column using UNION.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT ENAME AS NAME FROM EMP UNION SELECT DNAME FROM DEPT;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q7)Display all employee names and department names, including duplicates.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT ENAME FROM EMP UNION ALL SELECT DNAME FROM DEPT;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q8)Display jobs that exist in EMP table and also exist as department names in DEPT table (use INTERSECT).</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT job FROM emp INTERSECT SELECT dname FROM dept;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q9)Display employee names that are not department names.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT ename FROM emp MINUS SELECT dname FROM dept;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q10)Display department locations that are not used by any employee (assume EMP has location column or use join + MINUS).</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT loc FROM dept MINUS SELECT loc FROM emp;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q11)Display employee names from department 10 and department 20 using UNION.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT ENAME FROM EMP WHERE DEPTNO = 10 UNION SELECT ENAME FROM EMP WHERE DEPTNO = 20;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q12)Display employee names from department 10 and department 20 including duplicates.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT ENAME FROM EMP WHERE DEPTNO = 10 UNION ALL SELECT ENAME FROM EMP WHERE DEPTNO = 20;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details><p>Q13)Display employees who work in departments that exist in DEPT table using INTERSECT.</p>
+      </details><p>Q13)Display employees who work in departments that exist in DEPT table using INTERSECT.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT);
  </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details><p>Q14)Display employees whose department does not exist in DEPT table using MINUS..</p>
+      </details><p>Q14)Display employees whose department does not exist in DEPT table using MINUS..</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>  SELECT * FROM EMP MINUS SELECT EMP.* FROM EMP JOIN DEPT ON EMP.DEPTNO = DEPT.DEPTNO;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q15)Display department numbers that have employees and also exist in DEPT table.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details><p>Q16)Display all unique job roles from EMP and all unique department names from DEPT in one result..</p>
+      </details><p>Q16)Display all unique job roles from EMP and all unique department names from DEPT in one result..</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT DISTINCT JOB FROM EMP UNION SELECT DISTINCT DNAME FROM DEPT;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q17)Display common values between employee job and department location.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT JOB FROM EMP INTERSECT SELECT LOC FROM DEPT;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q18) Display employee names who are not assigned to any valid department.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT ENAME FROM EMP WHERE DEPTNO NOT IN (SELECT DEPTNO FROM DEPT);
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q19)Combine:
 
 * Employees earning more than 2000
@@ -599,10 +1398,7 @@ using UNION.</p>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT * FROM EMP WHERE SAL > 2000 UNION SELECT * FROM EMP WHERE DEPTNO = 10;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q20)Display employees who:
 
 * Work in department 10
@@ -614,10 +1410,7 @@ but
         <summary><b>QUERY:</b></summary>
         <pre>SELECT * FROM EMP WHERE DEPTNO = 10 MINUS SELECT * FROM EMP WHERE DEPTNO = 20;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details> 
+      </details> 
     <p>Q21)Display department numbers that:
 
 * Exist in EMP
@@ -632,10 +1425,7 @@ but
         <summary><b>QUERY:</b></summary>
         <pre>SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT MINUS SELECT 10 FROM DUAL;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     </p>
     <p>Q22)Display all employee names and department names in a single result sorted alphabetically.
 </p>
@@ -643,30 +1433,21 @@ but
         <summary><b>QUERY:</b></summary>
         <pre>SELECT ENAME AS NAME FROM EMP UNION SELECT DNAME FROM DEPT ORDER BY NAME;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     </p><p>Q23)Display department numbers that appear in EMP more than once using UNION ALL.
 </p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT DEPTNO FROM EMP GROUP BY DEPTNO HAVING COUNT(*) > 1 UNION ALL SELECT DEPTNO FROM EMP GROUP BY DEPTNO HAVING COUNT(*) > 1;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     </p><p>Q24)Display employees from departments located in NEW YORK and DALLAS using UNION.
 </p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC = 'NEW YORK') UNION SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC = 'DALLAS');
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     </p><p>Q25)Combine results of:
 
 * Employees with salary > 3000
@@ -679,10 +1460,7 @@ Remove duplicates.
         <summary><b>QUERY:</b></summary>
         <pre> SELECT * FROM EMP WHERE SAL > 3000 UNION SELECT * FROM EMP WHERE JOB = 'MANAGER';
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     </p>
     </p>
     <hr>
@@ -692,28 +1470,19 @@ Remove duplicates.
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno; </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q2)Display employee name, salary, and department location..</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT e.ename, e.sal, d.loc FROM emp e JOIN dept d ON e.deptno = d.deptno;
  </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
 <p>Q3).Display employee name and department name for department 10.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.deptno = 10;
  </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q4)Display employee name and department name where salary > 2000.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -727,50 +1496,32 @@ Remove duplicates.
     <details>
         <summary><b>QUERY:</b></summary>
         <pre>SELECT e.ename, e.job, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno; </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q6)Display employee name and department location for CLERKs.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT e.ename, d.loc FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.job = 'CLERK';</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q7)Display employee name and department name working in NEW YORK..</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE d.loc = 'NEW YORK';</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q8).Display employee name, department number, and department name.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT e.ename, e.deptno, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q9).Display employees hired after 1981 with department name.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.hiredate > '31-DEC-1981';</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q10).Display employees with commission along with department name.</p>
     <details>
         <summary><b>QUERY:</b></summary>
         <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.comm IS NOT NULL;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q11)Display employees whose salary is between 1500 and 3000 with department.
 </p>
     <details>
@@ -779,10 +1530,7 @@ Remove duplicates.
 FROM employees e
 JOIN departments d ON e.department_id = d.department_id
 WHERE e.salary BETWEEN 1500 AND 3000;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q12)Display employees who are the only employee in their department.
 </p>
     <details>
@@ -795,10 +1543,7 @@ WHERE e.department_id IN (
     GROUP BY department_id
     HAVING COUNT(*) = 1
 );</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details
+      </details
     ><p>Q13)Display employees whose department has more than 3 employees.
 
 
@@ -813,10 +1558,7 @@ JOIN (
     GROUP BY department_id
     HAVING COUNT(*) > 3
 ) d ON e.department_id = d.department_id;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>14)Display departments where no employee earns more than 2000.
 
 
@@ -828,10 +1570,7 @@ FROM departments d
 JOIN employees e ON d.department_id = e.department_id
 GROUP BY d.department_id, d.department_name
 HAVING MAX(e.salary) <= 2000;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q15)Display employees who earn more than at least one manager.
 </p>
     <details>
@@ -840,10 +1579,7 @@ HAVING MAX(e.salary) <= 2000;</pre>
 FROM employees e
 JOIN employees m ON m.job_title = 'Manager'
 WHERE e.salary > m.salary;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details> 
+      </details> 
     <p>Q16)Display employees who share same job and department.
 
 
@@ -856,10 +1592,7 @@ JOIN employees e2
   ON e1.job_title = e2.job_title
  AND e1.department_id = e2.department_id
  AND e1.employee_id <> e2.employee_id;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q17)Display employees working in same department as their manager.
 </p>
     <details>
@@ -869,10 +1602,7 @@ FROM employees e
 JOIN employees m 
   ON e.manager_id = m.employee_id
 WHERE e.department_id = m.department_id;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details> 
+      </details> 
     <p>Q18)Display employees whose manager works in a different department.
 
 
@@ -884,10 +1614,7 @@ FROM employees e
 JOIN employees m 
   ON e.manager_id = m.employee_id
 WHERE e.department_id <> m.department_id;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q19)Display employees who are highest paid in their department.
 </p>
     <details>
@@ -898,10 +1625,7 @@ LEFT JOIN employees e2
   ON e.department_id = e2.department_id
  AND e.salary < e2.salary
 WHERE e2.employee_id IS NULL;</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details> 
+      </details> 
     <p>Q20)Display employees earning more than their department average.
 
 
@@ -918,10 +1642,7 @@ JOIN (
 ON e.department_id = d.department_id
 WHERE e.salary > d.avg_salary;
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
 
     </p>
     <hr>
@@ -1569,10 +2290,7 @@ WHERE e.salary > d.avg_salary;
     DBMS_OUTPUT.PUT_LINE('City: Panipat');
 END;
 /</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q2)Write a PL/SQL block to display numbers from 1 to 5 using DBMS_OUTPUT.PUT_LINE.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1583,10 +2301,7 @@ END;
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q3)Write a PL/SQL block to print the current system date.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1595,10 +2310,7 @@ END;
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details> </details>
+       </details>
     <p>Q4)Write a PL/SQL block to display employee name and salary (use variables).</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1616,10 +2328,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q5)Write a PL/SQL block to declare a variable and assign your age, then display it.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1630,10 +2339,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q6)Write a PL/SQL block to declare two variables and print their sum.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1647,10 +2353,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q7)Write a PL/SQL block to store employee name and salary in variables and display them.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1668,10 +2371,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q8)Write a PL/SQL block to swap two numbers using variables.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1690,10 +2390,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q9)Write a PL/SQL block to calculate area of a rectangle using variables.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1707,10 +2404,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details> </details>
+       </details>
     <p>Q10)Write a PL/SQL block to declare a constant value for PI and calculate area of a circle.</p>
     <details>
         <summary><b>QUERY:</b></summary>
@@ -1724,10 +2418,7 @@ BEGIN
 END;
 /
 </pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q11)Write a PL/SQL block to declare a constant tax rate and calculate total salary after tax.
 
 (Constants)
@@ -1755,10 +2446,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Salary after Tax: ' || v_net_salary);
 END;
 /</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q12)Write a PL/SQL block where constant value cannot be changed (try modifying and observe error).
 
 (Constants)
@@ -1779,10 +2467,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Result after multiplying constant by 2: ' || v_result);
 END;
 /</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q13)Write a PL/SQL block to calculate simple interest using constant rate of interest.
 
 (Constants)
@@ -1807,10 +2492,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Simple Interest: ' || simple_interest);
 END;
 /</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q14)Write a PL/SQL block using different datatypes: NUMBER, VARCHAR2, DATE.
 
 (Datatypes)
@@ -1835,10 +2517,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Join Date: ' || TO_CHAR(v_join_date, 'DD-MON-YYYY'));
 END;
 /</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
     <p>Q15)Write a PL/SQL block to declare a variable using %TYPE from EMP table salary column.
 
 (Datatypes)
@@ -1855,10 +2534,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Salary is: ' || v_salary);
 END;
 /</pre>
-        <details>
-            <summary><b>OUTPUT</b></summary>
-            <img src="images/1.png" alt="">
-    </details></details>
+      </details>
 
     <hr>
 
