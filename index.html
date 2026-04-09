@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 15px;
+
+        }
+
+        h2 {
+            color: blueviolet;
+        }
+
+        summary {
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body style="font-size:22px; background-color: rgb(207, 167, 241);">
+    <p id="intro">
+    <h1><U>
+            <centre>DATABASE MANAGEMENT SYSTEM</centre>
+        </U> </h1>
+    </p>
+    <hr>
+    <p id="program1">
+    <h2>DQL(DATA QUERY LANGUAGE)</h2>
+    <p>Q1)Display all columns of the EMP table.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   DESC SCOTT.EMP;</pre>
+
+
+    </details>
+    <p>Q2)Display EMPNO, ENAME, and SAL of all employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT EMPNO,ENAME,SAL FROM SCOTT.EMP;</pre>
+
+
+    </details>
+    <p>Q3)Display unique job titles from EMP.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT DISTINCT JOB FROM SCOTT.EMP;</pre>
+
+
+    </details>
+
+
+    <p>4 Display employee names along with their department numbers.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename,deptno from scott.emp;</pre>
+
+
+    </details>
+
+    <p>5 Display all department details.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.dept;</pre>
+
+
+    </details>
+
+
+    <p>6 Display distinct department numbers from EMP.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select distinct deptno from scott.emp;</pre>
+
+
+    </details>
+    <p>7 Display employee name and annual salary (SAL × 12)</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename,SAL*12 as annual_salary from scott.emp;   </pre>
+
+
+    </details>
+    <p>8 Display employee name, salary, and commission.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select ename,sal,comm from scott.emp; </pre>
+
+
+    </details>
+    <p>9 Display job and salary of all employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select JOB,SAL from scott.emp;</pre>
+
+
+    </details>
+    <p>10 Display employees along with their manager numbers.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename,mgr from scott.emp;</pre>
+
+
+    </details>
+
+    </p>
+    <hr>
+
+    <p id="program4">
+    <h2>SUBQUERIES:SINGLE ROW,MULTIPLE ROW</h2>
+    <p>1 Display employees whose salary is greater than the salary of SMITH.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT SAL FROM SCOTT.EMP WHERE ENAME = 'SMITH'); </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+
+    </details>
+    <p>2 Display employees whose job is same as ALLEN. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE JOB = (SELECT JOB FROM SCOTT.EMP WHERE ENAME = 'ALLEN');</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub2.png" alt="">
+        </details>
+
+    </details>
+    <p>3 Display employees who work in the same department as KING.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    SELECT * FROM SCOTT.EMP WHERE DEPTNO = (SELECT DEPTNO FROM SCOTT.EMP WHERE ENAME = 'KING');</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub3.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>4 Display employees whose salary is less than the salary of JONES.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    SELECT * FROM SCOTT.EMP WHERE SAL < (SELECT SAL FROM SCOTT.EMP WHERE ENAME = 'JONES');</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub4.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>5 Display employees whose salary is greater than ANY employee in department 30.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT * FROM SCOTT.EMP WHERE SAL > ANY (SELECT SAL FROM SCOTT.EMP WHERE DEPTNO = 30);
+        </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub5.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>6 Display employees whose salary is less than ALL employees in department 20.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE SAL < ALL (SELECT SAL FROM SCOTT.EMP WHERE DEPTNO = 20);</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub6.png" alt="">
+        </details>
+
+    </details>
+    <p>7 Display employees who work in departments located in DALLAS.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.DEPT WHERE LOC = 'DALLAS');
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub7.png" alt="">
+        </details>
+
+    </details>
+    <p>8 Display employees whose salary is equal to the maximum salary.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP);</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub8.png" alt="">
+        </details>
+
+    </details>
+
+    <p>9 Display employees whose salary is greater than the average salary.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP);</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub9.png" alt="">
+        </details>
+
+    </details>
+
+    <p>10 Display employees who are not working in department 10.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE DEPTNO NOT IN (SELECT DEPTNO FROM SCOTT.DEPT WHERE DEPTNO = 10);
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub10.png" alt="">
+        </details>
+
+    </details>
+
+    </p>
+
+    </p>
+    <hr>
+    <!-- scaler functions -->
+    <p id="program5">
+    <h2>SCALER FUNCTIONS</h2>
+    <p>1. Write a query to find the length of the string 'Database'.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT LENGTH('Database'); </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+    <p>2. Display employee names in uppercase..</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT UPPER(ename) FROM emp; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>3. Display names in lowercase.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT LOWER(ename) FROM emp; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>4. Find length of employee name.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT ename, LENGTH(ename) FROM emp; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>5.Display first 3 letters of employee name.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT SUBSTR(ename,1,3) FROM emp;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>6.Display current system date.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT SYSDATE FROM dual;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>7.Round salary to nearest integer.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT ename, ROUND(sal) FROM emp;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>8.Find absolute value.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT ABS(-50) FROM dual;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>9.Combine employee name and job.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT ename || ' works as ' || job FROM emp;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+
+    <p>10.Remove extra spaces from name.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT TRIM('  ORACLE  ') FROM dual;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/sub1.png" alt="">
+        </details>
+    </details>
+
+    <p id="program6">
+    <h2>DCL (Data Control Language)</h2>
+    <p>1. Give SELECT permission on emp table to user SCOTT</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   GRANT SELECT ON emp TO scott;</pre>
+
+
+    </details>
+    <p>2 Allow user SCOTT to insert records into emp.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   GRANT INSERT ON emp TO scott;</pre>
+
+
+    </details>
+    <p>3 Give SELECT and INSERT permissions to SCOTT. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   GRANT SELECT, INSERT ON emp TO scott; </pre>
+
+
+    </details>
+
+
+    <p>4 GRANT ALL privileges</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   GRANT ALL ON emp TO scott;</pre>
+
+
+    </details>
+
+
+    <p>5 Allow SCOTT to grant SELECT to others..</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  GRANT SELECT ON emp TO scott WITH GRANT OPTION;</pre>
+
+
+    </details>
+
+
+    <p>6 Remove SELECT permission from SCOTT.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  REVOKE SELECT ON emp FROM scott;</pre>
+
+
+    </details>
+    <p>7 Remove SELECT and INSERT from SCOTT.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   REVOKE SELECT, INSERT ON emp FROM scott;</pre>
+
+
+    </details>
+    <p>8 Remove all permissions from SCOTT.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   REVOKE ALL ON emp FROM scott;</pre>
+
+
+    </details>
+    <p>9 Give SELECT access to all users.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   GRANT SELECT ON emp TO PUBLIC;</pre>
+
+
+    </details>
+    <p>10 Remove SELECT from all users.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   REVOKE SELECT ON emp FROM PUBLIC;</pre>
+
+
+    </details>
+
+    </p>
+
+    </p>
+    <hr>
+    <!-- set operator -->
+ <p id="program7">
+    <h2>SET OPERATOR </h2>
+    <p>Q1)Display all department numbers from both EMP and DEPT tables using UNION.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT DEPTNO FROM EMP UNION SELECT DEPTNO FROM DEPT;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q2)Display all department numbers from EMP and DEPT including duplicates using UNION ALL.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT DEPTNO FROM EMP UNION ALL SELECT DEPTNO FROM DEPT;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+
+    <p>Q3)display department numbers that are present in both EMP and DEPT using INTERSECT..</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q4)Display department numbers that are present in EMP but not in DEPT using MINUS.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT DEPTNO FROM EMP MINUS SELECT DEPTNO FROM DEPT;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q5)Display department numbers that are present in DEPT but not assigned to any employee.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT DEPTNO FROM DEPT MINUS SELECT DEPTNO FROM EMP;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q6)Display employee names and department names in a single column using UNION.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT ENAME AS NAME FROM EMP UNION SELECT DNAME FROM DEPT;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q7)Display all employee names and department names, including duplicates.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT ENAME FROM EMP UNION ALL SELECT DNAME FROM DEPT;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q8)Display jobs that exist in EMP table and also exist as department names in DEPT table (use INTERSECT).</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT job FROM emp INTERSECT SELECT dname FROM dept;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q9)Display employee names that are not department names.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT ename FROM emp MINUS SELECT dname FROM dept;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q10)Display department locations that are not used by any employee (assume EMP has location column or use join + MINUS).</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT loc FROM dept MINUS SELECT loc FROM emp;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q11)Display employee names from department 10 and department 20 using UNION.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT ENAME FROM EMP WHERE DEPTNO = 10 UNION SELECT ENAME FROM EMP WHERE DEPTNO = 20;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q12)Display employee names from department 10 and department 20 including duplicates.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT ENAME FROM EMP WHERE DEPTNO = 10 UNION ALL SELECT ENAME FROM EMP WHERE DEPTNO = 20;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details><p>Q13)Display employees who work in departments that exist in DEPT table using INTERSECT.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT);
+ </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details><p>Q14)Display employees whose department does not exist in DEPT table using MINUS..</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT * FROM EMP MINUS SELECT EMP.* FROM EMP JOIN DEPT ON EMP.DEPTNO = DEPT.DEPTNO;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q15)Display department numbers that have employees and also exist in DEPT table.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details><p>Q16)Display all unique job roles from EMP and all unique department names from DEPT in one result..</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT DISTINCT JOB FROM EMP UNION SELECT DISTINCT DNAME FROM DEPT;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q17)Display common values between employee job and department location.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT JOB FROM EMP INTERSECT SELECT LOC FROM DEPT;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q18) Display employee names who are not assigned to any valid department.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT ENAME FROM EMP WHERE DEPTNO NOT IN (SELECT DEPTNO FROM DEPT);
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q19)Combine:
+
+* Employees earning more than 2000
+
+* Employees from department 10
+
+using UNION.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT * FROM EMP WHERE SAL > 2000 UNION SELECT * FROM EMP WHERE DEPTNO = 10;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q20)Display employees who:
+
+* Work in department 10
+
+but
+
+* Not in department 20 using MINUS.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT * FROM EMP WHERE DEPTNO = 10 MINUS SELECT * FROM EMP WHERE DEPTNO = 20;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details> 
+    <p>Q21)Display department numbers that:
+
+* Exist in EMP
+
+* Exist in DEPT
+
+* But exclude department 10
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT MINUS SELECT 10 FROM DUAL;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    </p>
+    <p>Q22)Display all employee names and department names in a single result sorted alphabetically.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT ENAME AS NAME FROM EMP UNION SELECT DNAME FROM DEPT ORDER BY NAME;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    </p><p>Q23)Display department numbers that appear in EMP more than once using UNION ALL.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT DEPTNO FROM EMP GROUP BY DEPTNO HAVING COUNT(*) > 1 UNION ALL SELECT DEPTNO FROM EMP GROUP BY DEPTNO HAVING COUNT(*) > 1;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    </p><p>Q24)Display employees from departments located in NEW YORK and DALLAS using UNION.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC = 'NEW YORK') UNION SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC = 'DALLAS');
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    </p><p>Q25)Combine results of:
+
+* Employees with salary > 3000
+
+* Employees with job = 'MANAGER'
+
+Remove duplicates.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT * FROM EMP WHERE SAL > 3000 UNION SELECT * FROM EMP WHERE JOB = 'MANAGER';
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    </p>
+    </p>
+    <hr>
+    <p id="program12">
+    <h2> JOINS </h2>
+    <p>Q1)Display employee name and department name.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q2)Display employee name, salary, and department location..</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.ename, e.sal, d.loc FROM emp e JOIN dept d ON e.deptno = d.deptno;
+ </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+<p>Q3).Display employee name and department name for department 10.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.deptno = 10;
+ </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q4)Display employee name and department name where salary > 2000.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.sal > 2000;
+</pre>
+        <details></details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q5).Display employee name, job, and department name.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.ename, e.job, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q6)Display employee name and department location for CLERKs.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e.ename, d.loc FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.job = 'CLERK';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q7)Display employee name and department name working in NEW YORK..</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE d.loc = 'NEW YORK';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q8).Display employee name, department number, and department name.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e.ename, e.deptno, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q9).Display employees hired after 1981 with department name.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.hiredate > '31-DEC-1981';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q10).Display employees with commission along with department name.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.comm IS NOT NULL;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q11)Display employees whose salary is between 1500 and 3000 with department.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.salary, d.department_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+WHERE e.salary BETWEEN 1500 AND 3000;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q12)Display employees who are the only employee in their department.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.department_id
+FROM employees e
+WHERE e.department_id IN (
+    SELECT department_id
+    FROM employees
+    GROUP BY department_id
+    HAVING COUNT(*) = 1
+);</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details
+    ><p>Q13)Display employees whose department has more than 3 employees.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.department_id
+FROM employees e
+JOIN (
+    SELECT department_id
+    FROM employees
+    GROUP BY department_id
+    HAVING COUNT(*) > 3
+) d ON e.department_id = d.department_id;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>14)Display departments where no employee earns more than 2000.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT d.department_id, d.department_name
+FROM departments d
+JOIN employees e ON d.department_id = e.department_id
+GROUP BY d.department_id, d.department_name
+HAVING MAX(e.salary) <= 2000;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q15)Display employees who earn more than at least one manager.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT DISTINCT e.employee_name, e.salary
+FROM employees e
+JOIN employees m ON m.job_title = 'Manager'
+WHERE e.salary > m.salary;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details> 
+    <p>Q16)Display employees who share same job and department.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> SELECT e1.employee_name, e1.job_title, e1.department_id
+FROM employees e1
+JOIN employees e2
+  ON e1.job_title = e2.job_title
+ AND e1.department_id = e2.department_id
+ AND e1.employee_id <> e2.employee_id;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q17)Display employees working in same department as their manager.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.department_id, m.employee_name AS manager_name
+FROM employees e
+JOIN employees m 
+  ON e.manager_id = m.employee_id
+WHERE e.department_id = m.department_id;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details> 
+    <p>Q18)Display employees whose manager works in a different department.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.department_id, m.employee_name AS manager_name, m.department_id AS manager_department
+FROM employees e
+JOIN employees m 
+  ON e.manager_id = m.employee_id
+WHERE e.department_id <> m.department_id;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q19)Display employees who are highest paid in their department.
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.department_id, e.salary
+FROM employees e
+LEFT JOIN employees e2
+  ON e.department_id = e2.department_id
+ AND e.salary < e2.salary
+WHERE e2.employee_id IS NULL;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details> 
+    <p>Q20)Display employees earning more than their department average.
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>SELECT e.employee_name, e.salary, e.department_id
+FROM employees e
+JOIN (
+    SELECT department_id, AVG(salary) AS avg_salary
+    FROM employees
+    GROUP BY department_id
+) d
+ON e.department_id = d.department_id
+WHERE e.salary > d.avg_salary;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+
+    </p>
+    <hr>
+
+    <!-- YEH HAI WHERE CLAUSE KA  -->
+    <p id="program8">
+    <h2>WHERE CLAUSE, ORDER BY CLAUSE AND ALIAS</h2>
+    <p>1 Display employees whose salary is greater than 3000.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where sal>3000;</pre>
+
+
+    </details>
+    <p>2 Display employees working in department 10.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where deptno=10;;</pre>
+
+
+    </details>
+    <p>3 Display employees whose job is 'CLERK'</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job='CLERK'; </pre>
+
+
+    </details>
+
+
+    <p>4 Display employees hired after 01-JAN-81</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where  hiredate>'01-JAN-1981';</pre>
+
+
+    </details>
+
+
+    <p>5 Display employees whose salary is less than 1500.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where sal<1500; </pre>
+
+
+    </details>
+
+
+    <p>6 Display employees whose salary is > 2000 and job is 'MANAGER'</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where sal>2000 and job='MANAGER'; </pre>
+
+
+    </details>
+    <p>7 Display employees working in department 10 or 20.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where deptno in ('10','20');   </pre>
+
+
+    </details>
+    <p>8 Display employees whose job is 'SALESMAN' and salary > 1500.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job='SALESMAN' and sal>1500;</pre>
+
+
+    </details>
+    <p>9 Display employees who are either CLERK or ANALYST.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job in('CLERK','ANALYST');</pre>
+
+
+    </details>
+    <p>10 Display employees hired before 1982 and working in department 30.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp  where hiredate<'01-JAN-1982' and deptno=30;</pre>
+
+
+    </details>
+
+
+
+
+    <p>11 Display employees working in departments 10, 20, or 30.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where deptno in ('10','20','30');</pre>
+
+
+    </details>
+    <p>12 Display employees whose job is not MANAGER or CLERK.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job not in('CLERK','MANAGER');</pre>
+
+
+    </details>
+    <p>13 Display employees whose department is not 10.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where deptno <> '10';  </pre>
+
+
+    </details>
+
+
+    <p>14 Display employees whose salary is between 1000 and 3000.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where sal between 1000 and 3000; </pre>
+
+
+    </details>
+
+
+    <p>15 Display employees hired between 01-JAN-81 and 31-DEC-81.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where hiredate between '01-JAN-1981' and '31-DEC-1981'; </pre>
+
+
+    </details>
+
+
+    <p>16 Display employees whose name starts with 'A'</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where ename like 'A%'; </pre>
+
+
+    </details>
+    <p>17 Display employees whose name ends with 'N'. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    select * from scott.emp where ename like '%N'; </pre>
+
+
+    </details>
+    <p>18 Display employees whose name contains 'LL'</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%LL%';</pre>
+
+
+    </details>
+    <p>19 Display employees whose name has exactly 5 characters. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where ename like '_____';</pre>
+
+
+    </details>
+
+    <p>20 Display employees whose second character is 'A'. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> select * from scott.emp where ename like '_A%';</pre>
+
+
+    </details>
+
+    <p>21 Display all employees ordered by salary in ascending order.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp order by sal ;</pre>
+
+
+    </details>
+    <p>22 Display all employees ordered by salary in descending order.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp order by sal desc;</pre>
+
+
+    </details>
+    <p>23 Display employees ordered by hire date.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp order by hiredate;</pre>
+
+
+    </details>
+
+
+    <p>24 Display employees ordered by department number and salary.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp order by deptno,sal; </pre>
+
+
+    </details>
+
+
+    <p>25 Display employees ordered by job (ascending) and salary (descending).</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp order by job, sal desc; </pre>
+
+
+    </details>
+
+
+    <p>26 Display employee names ordered alphabetically. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select ename from scott.emp order by ename;</pre>
+
+
+    </details>
+    <p>27 Display employees of department 30 ordered by salary. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>     select * from scott.emp where deptno='30' order by sal;</pre>
+
+
+    </details>
+    <p>28 Display employees ordered by annual salary</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename,sal*12 as annual_salary from scott.emp order by sal*12 ; </pre>
+
+
+    </details>
+    <p>29 Display employees ordered by commission.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp order by comm; </pre>
+
+
+    </details>
+
+    <p>30 Display employees ordered by job and name. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> select * from scott.emp order by job,ename;</pre>
+
+
+    </details>
+
+    <p>31 Display employee name as `Employee_Name`. </p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  select ename as Employee_Name from scott.emp;</pre>
+
+
+    </details>
+    <p>32 Display salary as `Monthly_Salary`.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> select sal as  Monthly_Salary from scott.emp;</pre>
+
+
+    </details>
+    <p>33 Display salary × 12 as `Annual_Salary`. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select sal*12 as  Annual_Salary from scott.emp;</pre>
+
+
+    </details>
+
+
+    <p>34 Display employee name and job with aliases. .</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select ename as employee_name,job as job_title from scott.emp; </pre>
+
+
+    </details>
+
+
+    <p>35 Display department number as `Dept_No`</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select deptno as Dept_No from scott.emp;  </pre>
+
+
+    </details>
+
+
+    <p>36 Display employee name and salary with meaningful aliases. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select ename as Employee_Name,sal as Salary from scott.emp; </pre>
+
+
+    </details>
+    <p>37 Display commission as `Incentive`. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>     select comm as Incentive from scott.emp;</pre>
+
+
+    </details>
+    <p>38 Display hire date as `Joining_Date`</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    select hiredate as  Joining_Date from scott.emp; </pre>
+
+
+    </details>
+    <p>39 Display employee name and department number with aliases.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> select ename as Employee_Name,deptno as Dept_No  from scott.emp; </pre>
+
+
+    </details>
+
+    <p>40 Display job and salary using aliases. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> select  job as job_title, sal as Salary from scott.emp;</pre>
+
+
+    </details>
+
+    </p>
+    <hr>
+    <p id="program9">
+    <h2>LIKE OPERATOR</h2>
+    <p>1 Display employees whose salary is greater than 3000.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where sal>3000;</pre>
+
+
+    </details>
+    <p>2 Display employees working in department 10.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where deptno=10;;</pre>
+
+
+    </details>
+    <p>3 Display employees whose job is 'CLERK'</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job='CLERK'; </pre>
+
+
+    </details>
+
+
+    <p>4 Display employees hired after 01-JAN-81</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where  hiredate>'01-JAN-1981';</pre>
+
+
+
+    </details>
+
+
+    <p>5 Display employees whose salary is less than 1500.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where sal<1500; </pre>
+
+
+    </details>
+
+
+    <p>6 Display employees whose salary is > 2000 and job is 'MANAGER'</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where sal>2000 and job='MANAGER'; </pre>
+
+
+    </details>
+    <p>7 Display employees working in department 10 or 20.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where deptno in ('10','20');   </pre>
+
+
+    </details>
+    <p>8 Display employees whose job is 'SALESMAN' and salary > 1500.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job='SALESMAN' and sal>1500;</pre>
+
+
+    </details>
+    <p>9 Display employees who are either CLERK or ANALYST.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job in('CLERK','ANALYST');</pre>
+
+
+    </details>
+    <p>10 Display employees hired before 1982 and working in department 30.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp  where hiredate<'01-JAN-1982' and deptno=30;</pre>
+
+
+    </details>
+
+    </p>
+
+    </p>
+    <hr>
+
+    <p id="program10">
+    <h2>PATTERN MATCHING OPERATOR(LIKE)</h2>
+    <p>1 Display employees whose name contains A but not as the first character.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where ename like '%A%' and ename not like 'A%';</pre>
+
+
+    </details>
+    <p>2 Display employees whose job does not contain ER.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    select * from scott.emp where job not like '%ER%';</pre>
+
+
+    </details>
+    <p>3 Display employees whose name does not start with a vowel </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    select * from scott.emp where ename not like 'A%' and ename not like 'E%' and ename not like 'I%' and ename not like 'O%' and ename not like 'U%'; </pre>
+
+
+    </details>
+
+
+    <p>4 Display employees whose job contains exactly one 'A'.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job  like '%A%' and job not like '%A%A%'; </pre>
+
+
+    </details>
+
+
+    <p>5 Display employees whose job does not start with C.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where job not like 'C%';</pre>
+
+
+    </details>
+
+
+    <p>6 Display employees whose name does not contain A.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where ename not like '%A%';</pre>
+
+
+    </details>
+    <p>7 Display employees whose job starts with C, ordered by job.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job like 'C%' order by job;  </pre>
+
+
+    </details>
+    <p>8 Display employees whose name starts with K, ordered by salary descending. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like 'K%' order by sal desc;</pre>
+
+
+    </details>
+    <p>9 Display employee name and annual salary for employees whose name starts with J. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename,sal*12 as annaual_salary from scott.emp where ename like 'J%';</pre>
+
+
+    </details>
+    <p>10 Display employee name and salary as Pay whose name contains A, ordered by salary </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename , sal as PAY from scott.emp where ename like '%A%' order by sal;</pre>
+
+
+    </details>
+
+    </p>
+    <p>11 Display employees whose name contains exactly one character between A and E </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%A_E%';</pre>
+
+
+    </details>
+
+    </p>
+    <p>12 Display employees whose name starts with S and salary > 2000. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like 'S%' and sal>2000;</pre>
+
+
+    </details>
+
+    </p>
+    <p>13 Display employees whose job ends with MAN and department is 20. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where job like '%MAN' and deptno='20';</pre>
+
+
+    </details>
+
+    </p>
+    <p>14 Display employees whose name contains A and commission is NULL.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%A%' and comm is null;</pre>
+
+
+    </details>
+
+    </p>
+    <p>15 Display employees whose job starts with C and salary < 1500. </p>
+            <details>
+                <summary><b>QUERY:</b></summary>
+                <pre>   select * from scott.emp where job like 'C%' and sal<1500; </pre>
+
+
+            </details>
+
+    </p>
+    <p>16 Display employees whose name ends with S and hired after 1981 </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%S' and hiredate>'01-JAN-1981';</pre>
+
+
+    </details>
+
+    </p>
+    <p>17 Display employees whose name starts with M and department is not 10</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    select * from scott.emp where ename like 'M%' and deptno<>10; </pre>
+
+
+    </details>
+
+    </p>
+    <p>18 Display employees whose job contains ER and salary between 2000 and 3000. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where job like '%ER%' and sal between 2000 and 3000;</pre>
+
+
+    </details>
+
+    </p>
+    <p>19 Display employees whose name starts with A or job starts with S.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like 'A%' and job like 'S%';</pre>
+
+
+    </details>
+
+    </p>
+
+    <p>20 Display employees whose name contains I and manager is NOT NULL. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where ename like '%I%' and mgr is not null;</pre>
+
+
+    </details>
+
+    </p>
+    <p>21 Display employees whose name ends with N and commission is NOT NULL.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%N' and comm is not null;</pre>
+
+
+    </details>
+
+    </p>
+    <p>22 Display employee name as Name whose name starts with S, ordered alphabetically. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select ename as Name  from scott.emp where ename like 'S%' order by ename;</pre>
+
+
+    </details>
+
+    </p>
+    <p>23 Display employees whose job starts with M, ordered by job and salary. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  select * from scott.emp where job like 'M%' order by job ,sal;</pre>
+
+
+    </details>
+
+    </p>
+    <p>24 Display employees whose name ends with E, ordered by hire date. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%E' order by hiredate;</pre>
+
+
+    </details>
+
+    </p>
+    <p>25 Display employees whose name contains R, ordered by department number.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   select * from scott.emp where ename like '%R%' order by deptno;</pre>
+
+
+    </details>
+
+    </p>
+
+
+
+    </p>
+    <hr>
+    <!-- plsql -->
+     <p id="program13">
+    <h2> PLSQL </h2>
+    </p>
+    <p>Q1)Write a PL/SQL block to print your name and city in two separate lines.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>BEGIN
+    DBMS_OUTPUT.PUT_LINE('Name: Kirti Sharma');
+    DBMS_OUTPUT.PUT_LINE('City: Panipat');
+END;
+/</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q2)Write a PL/SQL block to display numbers from 1 to 5 using DBMS_OUTPUT.PUT_LINE.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>BEGIN
+    FOR i IN 1..5 LOOP
+        DBMS_OUTPUT.PUT_LINE(i);
+    END LOOP;
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q3)Write a PL/SQL block to print the current system date.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>BEGIN
+    DBMS_OUTPUT.PUT_LINE('Current Date: ' || SYSDATE);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details> </details>
+    <p>Q4)Write a PL/SQL block to display employee name and salary (use variables).</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_name emp.ename%TYPE;
+    v_sal  emp.sal%TYPE;
+BEGIN
+    SELECT ename, sal 
+    INTO v_name, v_sal
+    FROM emp
+    WHERE empno = 7369;  -- you can change empno
+
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || v_sal);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q5)Write a PL/SQL block to declare a variable and assign your age, then display it.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    age NUMBER := 18;  -- you can change your age
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('My Age is: ' || age);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q6)Write a PL/SQL block to declare two variables and print their sum.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    a NUMBER := 10;
+    b NUMBER := 20;
+    sum NUMBER;
+BEGIN
+    sum := a + b;
+    DBMS_OUTPUT.PUT_LINE('Sum = ' || sum);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q7)Write a PL/SQL block to store employee name and salary in variables and display them.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_name emp.ename%TYPE;
+    v_sal  emp.sal%TYPE;
+BEGIN
+    SELECT ename, sal 
+    INTO v_name, v_sal
+    FROM emp
+    WHERE empno = 7369;  -- you can change empno
+
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || v_sal);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q8)Write a PL/SQL block to swap two numbers using variables.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    a NUMBER := 10;
+    b NUMBER := 20;
+    temp NUMBER;
+BEGIN
+    temp := a;
+    a := b;
+    b := temp;
+
+    DBMS_OUTPUT.PUT_LINE('After swapping:');
+    DBMS_OUTPUT.PUT_LINE('a = ' || a);
+    DBMS_OUTPUT.PUT_LINE('b = ' || b);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q9)Write a PL/SQL block to calculate area of a rectangle using variables.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    length NUMBER := 10;  -- you can change value
+    width  NUMBER := 5;   -- you can change value
+    area   NUMBER;
+BEGIN
+    area := length * width;
+    DBMS_OUTPUT.PUT_LINE('Area of rectangle = ' || area);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details> </details>
+    <p>Q10)Write a PL/SQL block to declare a constant value for PI and calculate area of a circle.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    pi CONSTANT NUMBER := 3.14159;
+    r NUMBER := 5;  -- radius (you can change this value)
+    area NUMBER;
+BEGIN
+    area := pi * r * r;
+    DBMS_OUTPUT.PUT_LINE('Area of circle = ' || area);
+END;
+/
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q11)Write a PL/SQL block to declare a constant tax rate and calculate total salary after tax.
+
+(Constants)
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_salary      NUMBER := 50000;       -- Original salary
+    c_tax_rate    CONSTANT NUMBER := 10; -- Constant tax rate in percentage
+    v_tax_amount  NUMBER;                -- Tax amount
+    v_net_salary  NUMBER;                -- Salary after tax
+BEGIN
+    -- Calculate tax amount
+    v_tax_amount := (v_salary * c_tax_rate) / 100;
+
+    -- Calculate net salary after tax
+    v_net_salary := v_salary - v_tax_amount;
+
+    -- Display results
+    DBMS_OUTPUT.PUT_LINE('Original Salary: ' || v_salary);
+    DBMS_OUTPUT.PUT_LINE('Tax Rate: ' || c_tax_rate || '%');
+    DBMS_OUTPUT.PUT_LINE('Tax Amount: ' || v_tax_amount);
+    DBMS_OUTPUT.PUT_LINE('Salary after Tax: ' || v_net_salary);
+END;
+/</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q12)Write a PL/SQL block where constant value cannot be changed (try modifying and observe error).
+
+(Constants)
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    c_rate CONSTANT NUMBER := 5;  -- Constant rate of interest
+    v_result NUMBER;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Initial Rate: ' || c_rate);
+
+    -- Attempt to modify the constant (this will cause an error)
+    -- Uncomment the line below to see the error
+    -- c_rate := 10;
+
+    v_result := c_rate * 2;
+    DBMS_OUTPUT.PUT_LINE('Result after multiplying constant by 2: ' || v_result);
+END;
+/</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q13)Write a PL/SQL block to calculate simple interest using constant rate of interest.
+
+(Constants)
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    principal      NUMBER := 10000;      -- Principal amount
+    time_years     NUMBER := 3;          -- Time in years
+    simple_interest NUMBER;               -- To store calculated interest
+    c_rate         CONSTANT NUMBER := 5; -- Constant rate of interest (%)
+BEGIN
+    -- Calculate Simple Interest: SI = (P * R * T) / 100
+    simple_interest := (principal * c_rate * time_years) / 100;
+
+    -- Display the result
+    DBMS_OUTPUT.PUT_LINE('Principal Amount: ' || principal);
+    DBMS_OUTPUT.PUT_LINE('Time (Years): ' || time_years);
+    DBMS_OUTPUT.PUT_LINE('Rate of Interest: ' || c_rate || '%');
+    DBMS_OUTPUT.PUT_LINE('Simple Interest: ' || simple_interest);
+END;
+/</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q14)Write a PL/SQL block using different datatypes: NUMBER, VARCHAR2, DATE.
+
+(Datatypes)
+
+
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_emp_id    NUMBER;           -- Numeric variable
+    v_emp_name  VARCHAR2(50);     -- String variable
+    v_join_date DATE;             -- Date variable
+BEGIN
+    -- Assign values to the variables
+    v_emp_id    := 101;
+    v_emp_name  := 'John Doe';
+    v_join_date := TO_DATE('2023-04-01', 'YYYY-MM-DD');
+
+    -- Display the values
+    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || v_emp_id);
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_emp_name);
+    DBMS_OUTPUT.PUT_LINE('Join Date: ' || TO_CHAR(v_join_date, 'DD-MON-YYYY'));
+END;
+/</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+    <p>Q15)Write a PL/SQL block to declare a variable using %TYPE from EMP table salary column.
+
+(Datatypes)
+</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>DECLARE
+    v_salary EMP.SALARY%TYPE;  -- variable with same datatype as EMP.SALARY
+BEGIN
+    -- Assign a value to the variable
+    v_salary := 3000;
+
+    -- Display the value
+    DBMS_OUTPUT.PUT_LINE('Salary is: ' || v_salary);
+END;
+/</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/1.png" alt="">
+    </details></details>
+
+    <hr>
+
+
+
+    <p id="program11">
+    <h2>VIEW OPERATOR</h2>
+    <p>1 Display employees whose name starts with A.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'A%'; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/VIEW1.png" alt="">
+        </details>
+
+    </details>
+    <p>2 Display employees whose name starts with S. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'S%';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view2.png" alt="">
+        </details>
+
+    </details>
+    <p>3 Display employees whose name ends with N.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%N';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view3.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>4 Display employees whose name ends with R.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%R';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view4.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>5 Display employees whose name contains LL.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%LL%';
+        </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view5.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>6 Display employees whose name contains AR.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%AR%';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view6.png" alt="">
+        </details>
+
+    </details>
+    <p>7 Display employees whose job starts with M.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE JOB LIKE 'M%';</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view7.png" alt="">
+        </details>
+
+    </details>
+    <p>8 Display employees whose salary is greater than 2000.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE SAL > 2000;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view8.png" alt="">
+        </details>
+
+    </details>
+    <p>9 Display employees whose salary is less than 1500.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE SAL < 1500;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view9.png" alt="">
+        </details>
+
+    </details>
+    <p>10 Display employees whose salary is between 1000 and 3000.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT * FROM SCOTT.EMP WHERE SAL BETWEEN 1000 AND 3000;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/view10.png" alt="">
+        </details>
+
+    </details>
+
+    </p>
+
+    </p>
+    <hr>
+
+    <p id="program14">
+    <h2>GROUP FUNCTIONS,GROUP BY CLAUSE,HAVING CLAUSE</h2>
+    <p>1 Display the maximum salary of employees.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT MAX(SAL) FROM SCOTT.EMP; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp1.png" alt="">
+        </details>
+
+    </details>
+    <p>2 Display the minimum salary of employees. </p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT MIN(SAL) FROM SCOTT.EMP; </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp2.png" alt="">
+        </details>
+
+    </details>
+    <p>3 Display the average salary of employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>     SELECT AVG(SAL) FROM SCOTT.EMP;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp3.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>4 Display the total salary of employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    SELECT SUM(SAL) FROM SCOTT.EMP;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp4.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>5 Display the number of employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT COUNT(*) FROM SCOTT.EMP;
+        </pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp5.png" alt="">
+        </details>
+
+    </details>
+
+
+    <p>6 Display department-wise total salary.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp6.png" alt="">
+        </details>
+
+    </details>
+    <p>7 Display department-wise average salary.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT DEPTNO, AVG(SAL) FROM SCOTT.EMP GROUP BY DEPTNO;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp7.png" alt="">
+        </details>
+
+    </details>
+    <p>8 Display department-wise number of employees.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  SELECT DEPTNO, COUNT(*) FROM SCOTT.EMP GROUP BY DEPTNO;</pre>
+
+
+    </details>
+
+    <p>9 Display departments having total salary greater than 5000.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>    SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO HAVING SUM(SAL) > 5000;</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp9.png" alt="">
+        </details>
+
+    </details>
+
+    <p>10 Display departments having average salary less than 3000.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   SELECT DEPTNO, AVG(SAL) FROM SCOTT.EMP GROUP BY DEPTNO HAVING AVG(SAL) < 3000;
+</pre>
+        <details>
+            <summary><b>OUTPUT</b></summary>
+            <img src="images/grp10.png" alt="">
+        </details>
+
+    </details>
+
+    </p>
+
+    </p>
+    <hr>
+
+    <p id="program15">
+    <h2>PL/SQL : Decision Control</h2>
+    <p>1. Display message if salary is greater than 3000.</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  v_sal NUMBER := 4000;
+BEGIN
+  IF v_sal > 3000 THEN
+    DBMS_OUTPUT.PUT_LINE('Salary is greater than 3000');
+  END IF;
+END;
+</pre>
+
+
+    </details>
+    <p>2 Check whether number is even or odd.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  num NUMBER := 5;
+BEGIN
+  IF MOD(num,2)=0 THEN
+    DBMS_OUTPUT.PUT_LINE('Even Number');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Odd Number');
+  END IF;
+END;
+</pre>
+
+
+    </details>
+    <p>3 Display grade based on marks.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  marks NUMBER := 75;
+BEGIN
+  IF marks >= 80 THEN
+    DBMS_OUTPUT.PUT_LINE('Grade A');
+  ELSIF marks >= 60 THEN
+    DBMS_OUTPUT.PUT_LINE('Grade B');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Grade C');
+  END IF;
+END;
+</pre>
+
+
+    </details>
+
+
+    <p>4 Check positive even number.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  num NUMBER := 10;
+BEGIN
+  IF num > 0 THEN
+    IF MOD(num,2)=0 THEN
+      DBMS_OUTPUT.PUT_LINE('Positive Even');
+    END IF;
+  END IF;
+END;
+</pre>
+
+
+    </details>
+
+
+    <p>5 Display day name.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  day_no NUMBER := 2;
+BEGIN
+  CASE day_no
+    WHEN 1 THEN DBMS_OUTPUT.PUT_LINE('Monday');
+    WHEN 2 THEN DBMS_OUTPUT.PUT_LINE('Tuesday');
+    WHEN 3 THEN DBMS_OUTPUT.PUT_LINE('Wednesday');
+    ELSE DBMS_OUTPUT.PUT_LINE('Invalid');
+  END CASE;
+END;
+/</pre>
+
+
+    </details>
+
+
+    <p>6 Check salary range.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  sal NUMBER := 2500;
+BEGIN
+  CASE 
+    WHEN sal > 3000 THEN DBMS_OUTPUT.PUT_LINE('High');
+    WHEN sal > 1500 THEN DBMS_OUTPUT.PUT_LINE('Medium');
+    ELSE DBMS_OUTPUT.PUT_LINE('Low');
+  END CASE;
+END;
+/</pre>
+
+
+    </details>
+    <p>7 Find greater number between two values.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  a NUMBER := 10;
+  b NUMBER := 20;
+BEGIN
+  IF a > b THEN
+    DBMS_OUTPUT.PUT_LINE('A is greater');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('B is greater');
+  END IF;
+END;
+/</pre>
+
+
+    </details>
+    <p>8 Check positive, negative, or zero</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  num NUMBER := -5;
+BEGIN
+  IF num > 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Positive');
+  ELSIF num < 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Negative');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Zero');
+  END IF;
+END;
+/</pre>
+
+
+    </details>
+    <p>9 Check voting eligibility</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  age NUMBER := 18;
+BEGIN
+  IF age >= 18 THEN
+    DBMS_OUTPUT.PUT_LINE('Eligible for voting');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Not eligible');
+  END IF;
+END;
+/</pre>
+
+
+    </details>
+    <p>10 Check leap year</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  year NUMBER := 2024;
+BEGIN
+  IF MOD(year,4)=0 THEN
+    DBMS_OUTPUT.PUT_LINE('Leap Year');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Not Leap Year');
+  END IF;
+END;
+/</pre>
+
+
+    </details>
+
+    </p>
+
+    </p>
+    <hr>
+
+    <p id="program16">
+    <h2>PLSQL:ITERATIVE CONTROL</h2>
+    <p>Q1)write a pl/sql block to print numbers from 1 to 5 using simple loop.(simple loop).</p>
+    <details>
+
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+                  i NUMBER := 1;
+                BEGIN
+                  LOOP
+                    DBMS_OUTPUT.PUT_LINE(i);
+                    i := i + 1;
+                    EXIT WHEN i > 5;
+                   END LOOP;
+                END;
+                /
+</pre>
+
+
+    </details>
+    <p>Q2) write a pl/sql block to display numbers from 10 to 1 in reverse order.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  i NUMBER := 10;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+    i := i - 1;
+    EXIT WHEN i < 1;
+  END LOOP;
+END;
+/
+</pre>
+
+
+    </details>
+    <p>Q3) write a pl/sql block to calculate the sum of numbers from 1 to 10.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  i NUMBER := 1;
+  total NUMBER := 0;
+BEGIN
+  LOOP
+    total := total + i;
+    i := i + 1;
+    EXIT WHEN i > 10;
+  END LOOP;
+  
+  DBMS_OUTPUT.PUT_LINE('Sum = ' || total);
+END;
+/
+</pre>
+
+
+    </details>
+
+
+    <p>4 write a pl/sql block to print multiplication table of a number using simple loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  n NUMBER := 5;
+  i NUMBER := 1;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE(n || ' x ' || i || ' = ' || (n*i));
+    i := i + 1;
+    EXIT WHEN i > 10;
+  END LOOP;
+END;
+/</pre>
+
+
+    </details>
+
+    <p>5 write a pl/sql block to print even numbers between 1 to 20.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre> DECLARE
+  i NUMBER := 2;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+    i := i + 2;
+    EXIT WHEN i > 20;
+  END LOOP;
+END;
+/</pre>
+
+
+    </details>
+
+
+    <p>6 write a pl/sql block that exits the loop when a number becomes greater than 50.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  i NUMBER := 1;
+BEGIN
+  LOOP
+    EXIT WHEN i > 5;
+    DBMS_OUTPUT.PUT_LINE(i);
+    i := i + 1;
+  END LOOP;
+END;
+/</pre>
+
+
+    </details>
+    <p>7 write a pl/sql block to print numbers from 1 to 10 using while loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  i NUMBER := 1;
+BEGIN
+  LOOP
+    EXIT WHEN i > 5;
+    DBMS_OUTPUT.PUT_LINE(i);
+    i := i + 1;
+  END LOOP;
+END;
+/   </pre>
+
+
+    </details>
+    <p>8 write a pl/sql block to calculate factorial of a number using while loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  n NUMBER := 5;
+  fact NUMBER := 1;
+  i NUMBER := 1;
+BEGIN
+  WHILE i <= n LOOP
+    fact := fact * i;
+    i := i + 1;
+  END LOOP;
+  
+  DBMS_OUTPUT.PUT_LINE('Factorial = ' || fact);
+END; </pre>
+
+
+    </details>
+    <p>9 write a pl/sql block to display sum of digits of a number using while loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  n NUMBER := 1234;
+  sum_digits NUMBER := 0;
+BEGIN
+  WHILE n > 0 LOOP
+    sum_digits := sum_digits + MOD(n,10);
+    n := FLOOR(n/10);
+  END LOOP;
+  
+  DBMS_OUTPUT.PUT_LINE('Sum of digits = ' || sum_digits);
+END;
+/</pre>
+
+
+    </details>
+    <p>10 write a pl/sql block to reverse a number using while loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>   DECLARE
+  n NUMBER := 1234;
+  rev NUMBER := 0;
+BEGIN
+  WHILE n > 0 LOOP
+    rev := rev * 10 + MOD(n,10);
+    n := FLOOR(n/10);
+  END LOOP;
+  
+  DBMS_OUTPUT.PUT_LINE('Reverse = ' || rev);
+END;
+/
+</pre>
+
+
+    </details>
+
+    <p>11 write a pl/sql block to check wheather a number is palindrome using while loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  n NUMBER := 121;
+  temp NUMBER;
+  rev NUMBER := 0;
+BEGIN
+  temp := n;
+  
+  WHILE n > 0 LOOP
+    rev := rev * 10 + MOD(n,10);
+    n := FLOOR(n/10);
+  END LOOP;
+  
+  IF temp = rev THEN
+    DBMS_OUTPUT.PUT_LINE('Palindrome');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Not Palindrome');
+  END IF;
+END;
+/</pre>
+
+
+    </details>
+    <p>12 write a pl/sql block to print fibbonacci series up to N terms using while loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  n NUMBER := 10;
+  a NUMBER := 0;
+  b NUMBER := 1;
+  c NUMBER;
+  i NUMBER := 1;
+BEGIN
+  WHILE i <= n LOOP
+    DBMS_OUTPUT.PUT_LINE(a);
+    c := a + b;
+    a := b;
+    b := c;
+    i := i + 1;
+  END LOOP;
+END;
+/</pre>
+
+
+    </details>
+    <p>13 write a pl/sql block to print numbers from 1 to 10 using for loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  BEGIN
+  FOR i IN 1..10 LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+  END LOOP;
+END;
+/</pre>
+
+
+    </details>
+    <p>14 write a pl/sql block to print numbers in reversse order using for loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  BEGIN
+  FOR i IN REVERSE 1..10 LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+  END LOOP;
+END;
+/
+</pre>
+
+
+    </details>
+    <p>15 write a pl/sql block to calculate the sum of first 10 natural numbers using for loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  total NUMBER := 0;
+BEGIN
+  FOR i IN 1..10 LOOP
+    total := total + i;
+  END LOOP;
+  
+  DBMS_OUTPUT.PUT_LINE('Sum = ' || total);
+END;
+/</pre>
+
+
+    </details>
+    <p>16 write a pl/sql block to display multiplication table of 5 using for loop.</p>
+    <details>
+        <summary><b>QUERY:</b></summary>
+        <pre>  DECLARE
+  n NUMBER := 5;
+BEGIN
+  FOR i IN 1..10 LOOP
+    DBMS_OUTPUT.PUT_LINE(n || ' x ' || i || ' = ' || (n*i));
+  END LOOP;
+END;
+/
+</pre>
+
+
+    </details>
+
+
+    </p>
+    <hr>
+
+</body>
+
+</html>
